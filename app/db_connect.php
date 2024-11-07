@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
+$host = '/cloudsql/YOUR_PROJECT_ID:sanguine-fx-441010-h4:europe-west9:foodshareapp';
 $dbname = 'foodshare';
 $username = 'root';
-$password = '';
+$password = '4/bPV6Aoz"NlzTo9';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
