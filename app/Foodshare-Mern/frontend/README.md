@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+FoodShare MERN App
+FoodShare is a web application built with the MERN (MongoDB, Express, React, Node.js) stack to help reduce food waste and address food insecurity by allowing users to donate and claim food items. The app includes functionalities for user registration, login, managing food listings, claiming donations, and updating profiles.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Features
+Prerequisites
+Getting Started
+Project Structure
+API Documentation
+Environment Variables
+Deployment
+Contributing
+License
+Features
+User Registration & Authentication: Secure user registration and login functionality with JWT-based authentication.
+Food Listings: Users can view food listings and claim available items.
+Donations: Users can make monetary donations to support food initiatives.
+Profile Management: Users can update their profile information and upload a profile picture.
+Responsive Design: Mobile-friendly layout for easy access on any device.
+Prerequisites
+Node.js and npm
+MongoDB (use MongoDB Atlas for a hosted database)
+Git (for version control)
+Getting Started
+1. Clone the Repository
+bash
+Copy code
+git clone https://github.com/yourusername/foodshare-mern.git
+cd foodshare-mern
+2. Set Up Backend
+Install Dependencies
+bash
+Copy code
+cd backend
+npm install
+Configure Environment Variables
+Create a .env file in the backend directory with the following variables:
 
-## Available Scripts
+plaintext
+Copy code
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/foodshare?retryWrites=true&w=majority
+JWT_SECRET=your_jwt_secret
+PORT=5000
+Start the Server
+bash
+Copy code
+node server.js
+The backend server will start on http://localhost:5000.
 
-In the project directory, you can run:
+3. Set Up Frontend
+Install Dependencies
+bash
+Copy code
+cd ../frontend
+npm install
+Start the Frontend
+bash
+Copy code
+npm start
+The frontend will start on http://localhost:3000.
 
-### `npm start`
+Project Structure
+bash
+Copy code
+backend/
+├── models/          # Mongoose models for database collections
+├── routes/          # Express routes for user, listings, claims, and donations
+├── server.js        # Main server file
+└── .env             # Environment variables
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+frontend/
+├── src/
+│   ├── pages/       # Pages for each route (Home, Login, Register, Listings, etc.)
+│   ├── components/  # Reusable components (Navbar, ProtectedRoute)
+│   ├── services/    # API service for Axios instance and API calls
+│   ├── context/     # User context for global state management
+│   └── App.js       # Main React application file with routing
+└── public/          # Static files
+API Documentation
+Authentication
+POST /api/users/register - Register a new user
+POST /api/users/login - Log in an existing user and receive a JWT
+Listings
+GET /api/listings - Fetch all food listings
+POST /api/listings/add - Add a new listing (requires authentication)
+Claims
+POST /api/claims/claim - Claim a food item (requires authentication)
+Donations
+POST /api/donations/donate - Make a monetary donation (requires authentication)
+Profile Management
+PUT /api/users/change-credentials - Update user credentials
+POST /api/users/update-profile-pic - Upload a profile picture (requires authentication)
+Environment Variables
+For the backend, create a .env file in the backend directory with the following variables:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MONGO_URI - MongoDB connection string
+JWT_SECRET - Secret key for JWT token generation
+PORT - Port number for the backend server
+For the frontend, you may need to create a .env file in the frontend directory to specify the API URL, if different:
 
-### `npm test`
+plaintext
+Copy code
+REACT_APP_API_URL=http://localhost:5000/api
+Deployment
+Backend (Express & MongoDB)
+Use a cloud service like Heroku, DigitalOcean, or AWS to deploy the backend.
+Ensure MongoDB is hosted on MongoDB Atlas or a similar cloud provider.
+Set environment variables in your hosting platform with the values from your .env file.
+Frontend (React)
+Deploy the frontend using a service like Vercel, Netlify, or AWS Amplify.
+Update the API URL in the frontend environment variables to point to the backend server’s deployed URL.
+Contributing
+Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request for any changes or enhancements.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+License
+This project is licensed under the MIT License.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

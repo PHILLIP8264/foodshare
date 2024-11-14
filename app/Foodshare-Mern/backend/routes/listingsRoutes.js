@@ -1,8 +1,20 @@
 const express = require('express');
-const router = express.Router();
-const { createListing } = require('../controllers/listingsController');
-const authMiddleware = require('../middleware/authMiddleware');
+const Listing = require('../models/Listing');
 
-router.post('/listings', authMiddleware, createListing);
+const router = express.Router();
+
+// Add a new listing
+router.post('/add', async (req, res) => {
+  const listingData = req.body;
+  const listing = new Listing(listingData);
+  await listing.save();
+  res.send('Listing created');
+});
+
+// Get all listings
+router.get('/', async (req, res) => {
+  const listings = await Listing.find();
+  res.json(listings);
+});
 
 module.exports = router;
